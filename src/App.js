@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import { SERVER_URL } from "./config";
+import CommentList from "./components/CommentList";
+import "./App.css";
 
-function App() {
+export default function App() {
+  const [commentList, setCommentList] = useState([]);
+
+  useEffect(() => {
+    const loadData = async function () {
+      try {
+        const response = await fetch(`${SERVER_URL}/comments`);
+        const json = await response.json();
+        setCommentList(json);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    loadData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Comments</h1>
+      <CommentList commentList={commentList} />
     </div>
   );
 }
-
-export default App;
