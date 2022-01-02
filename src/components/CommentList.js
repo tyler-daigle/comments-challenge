@@ -1,29 +1,23 @@
 import { useState } from "react";
+import Comment from "./Comment";
 
-function Comment({ comment }) {
-  const [collapsed, setCollapsed] = useState(false);
-  return (
-    <div className="commentContainer">
-      <h2 onClick={() => setCollapsed(!collapsed)}>Comment</h2>
-
-      {!collapsed && (
-        <div>
-          <p>{comment.content}</p>
-          {comment.replies && comment.replies.length !== 0 && (
-            <CommentList commentList={comment.replies} />
-          )}
-        </div>
-      )}
-    </div>
-  );
-}
-
+// TODO: Move the collapsing to the <li>
 export default function CommentList({ commentList }) {
+  const [collapsed, setCollapsed] = useState(true);
+
   return (
     <ul>
       {commentList.map((comment) => (
         <li key={comment.id}>
-          <Comment comment={comment} />
+          <span onClick={() => setCollapsed(!collapsed)}>Comment</span>
+          {!collapsed && (
+            <>
+              <Comment comment={comment} />
+              {comment.replies && comment.replies.length !== 0 && (
+                <CommentList commentList={comment.replies} />
+              )}
+            </>
+          )}
         </li>
       ))}
     </ul>
