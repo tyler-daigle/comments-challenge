@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:server" : "json-server data.json"
+    "start:server": "json-server data.json -p 3333 --watch"
   },
   "keywords": [],
   "author": "",

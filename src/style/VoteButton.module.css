@@ -1,0 +1,21 @@
+.voteButtonContainer {
+  background-color: hsl(228, 33%, 97%);
+  gap: 0.5rem;
+  padding: 0.5rem;
+  display: inline-flex;
+  /* max-width: 7rem; */
+  justify-content: center;
+  border-radius: 5px;
+  font-size: 0.8rem;
+}
+
+.voteTotal {
+  font-weight: bold;
+  color: hsl(238, 40%, 52%);
+}
+.voteButton {
+  border: none;
+  background-color: inherit;
+  font-family: inherit;
+  color: hsl(238, 40%, 52%);
+}

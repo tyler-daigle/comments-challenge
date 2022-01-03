@@ -9,14 +9,9 @@ export default function CommentList({ commentList }) {
     <ul>
       {commentList.map((comment) => (
         <li key={comment.id}>
-          <span onClick={() => setCollapsed(!collapsed)}>Comment</span>
-          {!collapsed && (
-            <>
-              <Comment comment={comment} />
-              {comment.replies && comment.replies.length !== 0 && (
-                <CommentList commentList={comment.replies} />
-              )}
-            </>
+          <Comment comment={comment} />
+          {comment.replies && comment.replies.length !== 0 && (
+            <CommentList commentList={comment.replies} />
           )}
         </li>
       ))}
