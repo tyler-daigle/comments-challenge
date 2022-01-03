@@ -33,4 +33,8 @@
 
 .replyButton {
   font-family: inherit;
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+  color: hsl(238, 40%, 52%);
 }
