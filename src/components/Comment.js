@@ -1,8 +1,9 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect, Fragment } from "react";
 import VoteButton from "./VoteButton";
+import styles from "../style/Comment.module.css";
+import avatarPlaceHolder from "../images/avatars/image-amyrobson.png";
 
 export default function Comment({ comment }) {
-  const [collapsed, setCollapsed] = useState(false);
   const [numVotes, setNumVotes] = useState();
 
   useEffect(() => {
@@ -13,14 +14,23 @@ export default function Comment({ comment }) {
   const decVotes = () => setNumVotes(numVotes - 1);
 
   return (
-    <div className="commentContainer">
-      <span onClick={() => setCollapsed(!collapsed)}>Comment</span>
-      {!collapsed &&
-        <div>          
-          <p>{comment.content}</p>
-          <VoteButton numberVotes={numVotes} incVotes={incVotes} decVotes={decVotes} />
-        </div>
-      }
+    <div className={styles.commentContainer}>
+      <div className={styles.commentHeader}>
+        <img className={styles.userAvatar} src={avatarPlaceHolder} />
+        <span className={styles.userName}>{comment.user.username}</span>
+        <span className={styles.postedDate}>{comment.createdAt}</span>
+      </div>
+      <p className={styles.commentText}>{comment.content}</p>
+      <div className={styles.commentControls}>
+        <VoteButton
+          numberVotes={numVotes}
+          incVotes={incVotes}
+          decVotes={decVotes}
+        />
+        <button type="button" className={styles.replyButton}>
+          Reply
+        </button>
+      </div>
     </div>
   );
-};
+}

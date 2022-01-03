@@ -1,0 +1,15 @@
+.commentList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.commentListItem {
+}
+
+.repliesContainer {
+  border-left: solid 1px hsl(223, 19%, 93%);
+}
+
+.repliesContainer .commentList {
+  padding-left: 1rem;
+}

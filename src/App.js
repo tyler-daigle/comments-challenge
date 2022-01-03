@@ -20,8 +20,7 @@ export default function App() {
   }, []);
 
   return (
-    <div>
-      <h1>Comments</h1>
+    <div>      
       <CommentList commentList={commentList} />
     </div>
   );
