@@ -6,7 +6,7 @@ import VoteButton from "./VoteButton";
 import styles from "../style/Comment.module.css";
 import CommentHeader from "./CommentHeader";
 
-export default function Comment({ comment }) {
+export default function Comment({ comment, currentUser }) {
   const [numVotes, setNumVotes] = useState();
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function Comment({ comment }) {
   // TODO: do check for current user and set the "you" badge and the edit and delete buttons
   return (
     <div className={styles.commentContainer}>
-      <CommentHeader comment={comment} />
+      <CommentHeader comment={comment} currentUser={currentUser} />
       <p className={styles.commentText}>
         {comment.replyingTo && <ReplyingTo username={comment.replyingTo} />}{" "}
         {comment.content}

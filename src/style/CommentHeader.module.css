@@ -12,3 +12,10 @@
   width: 2rem;
   height: 2rem;
 }
+
+.youBadge {
+  padding: 0 0.5rem;
+  border-radius: 3px;
+  color: white;
+  background-color: hsl(238, 40%, 52%);
+}
