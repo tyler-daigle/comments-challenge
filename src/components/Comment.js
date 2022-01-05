@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply } from "@fortawesome/free-solid-svg-icons";
+import { userContext } from "../UserContext";
 import VoteButton from "./VoteButton";
 import styles from "../style/Comment.module.css";
 import CommentHeader from "./CommentHeader";

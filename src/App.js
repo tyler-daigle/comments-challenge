@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { SERVER_URL } from "./config";
+import { SERVER_URL, SERVER_PORT } from "./config";
+import UserContext from "./UserContext";
 import CommentList from "./components/CommentList";
 import "./App.css";
 
@@ -9,7 +10,7 @@ export default function App() {
   useEffect(() => {
     const loadData = async function () {
       try {
-        const response = await fetch(`${SERVER_URL}/comments`);
+        const response = await fetch(`${SERVER_URL}:${SERVER_PORT}/comments`);
         const json = await response.json();
         setCommentList(json);
       } catch (error) {
@@ -20,8 +21,8 @@ export default function App() {
   }, []);
 
   return (
-    <div>      
+    <UserContext>
       <CommentList commentList={commentList} />
-    </div>
+    </UserContext>
   );
 }

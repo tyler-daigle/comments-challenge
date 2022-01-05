@@ -1,2 +1,2 @@
-export const SERVER_URL = "http://localhost:3333";
-
+export const SERVER_URL = "http://localhost";
+export const SERVER_PORT = 3333;
