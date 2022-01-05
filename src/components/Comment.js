@@ -17,7 +17,7 @@ export default function Comment({ comment, currentUser }) {
 
   useEffect(() => {
     setNumVotes(comment.score);
-  }, []);
+  }, [comment]);
 
   const openDialog = () => setDialogOpen(true);
   const dialogCancel = () => setDialogOpen(false);

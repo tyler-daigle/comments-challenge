@@ -4,7 +4,7 @@ import Avatar from "./Avatar";
 import styles from "../style/CreateReply.module.css";
 
 export default function CreateReply({ type, okHandler, cancelHandler }) {
-  const { username, image } = useContext(userContext);
+  const { image } = useContext(userContext);
 
   return (
     <div className={styles.createReplyContainer}>

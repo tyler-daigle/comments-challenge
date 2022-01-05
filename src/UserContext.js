@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { SERVER_URL, SERVER_PORT } from "./config";
+// import { SERVER_URL, SERVER_PORT } from "./config";
 import commentsData from "./temp_data/data.json";
 
 export const userContext = createContext({
