@@ -23,7 +23,10 @@ export default function Comment({ comment }) {
   return (
     <div className={styles.commentContainer}>
       <CommentHeader comment={comment} />
-      <p className={styles.commentText}>{comment.content}</p>
+      <p className={styles.commentText}>
+        {comment.replyingTo && <ReplyingTo username={comment.replyingTo} />}{" "}
+        {comment.content}
+      </p>
       <div className={styles.commentControls}>
         <VoteButton
           numberVotes={numVotes}
@@ -36,4 +39,8 @@ export default function Comment({ comment }) {
       </div>
     </div>
   );
+}
+
+function ReplyingTo({ username }) {
+  return <span className={styles.replyingTo}>@{username}</span>;
 }
