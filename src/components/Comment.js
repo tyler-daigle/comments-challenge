@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faReply } from "@fortawesome/free-solid-svg-icons";
+import { faReply, faTrash, faPen } from "@fortawesome/free-solid-svg-icons";
 import { userContext } from "../UserContext";
 import VoteButton from "./VoteButton";
 import styles from "../style/Comment.module.css";
@@ -34,9 +34,25 @@ export default function Comment({ comment, currentUser }) {
           incVotes={incVotes}
           decVotes={decVotes}
         />
-        <button type="button" className={styles.replyButton}>
-          <FontAwesomeIcon icon={faReply} /> Reply
-        </button>
+
+        {currentUser === comment.user.username ? (
+          <div className={styles.editControlsContainer}>
+            <button
+              className={styles.deleteButton + " " + styles.controlButton}
+            >
+              <FontAwesomeIcon icon={faTrash} />
+              <span className={styles.buttonText}>Delete</span>
+            </button>
+            <button className={styles.editButton + " " + styles.controlButton}>
+              <FontAwesomeIcon icon={faPen} />
+              <span className={styles.buttonText}>Edit</span>
+            </button>
+          </div>
+        ) : (
+          <button type="button" className={styles.replyButton}>
+            <FontAwesomeIcon icon={faReply} /> Reply
+          </button>
+        )}
       </div>
     </div>
   );

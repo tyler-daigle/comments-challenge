@@ -15,6 +15,7 @@
 .commentControls {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .replyButton {
@@ -23,9 +24,38 @@
   background-color: transparent;
   font-weight: bold;
   color: hsl(238, 40%, 52%);
+  cursor: pointer;
 }
 
+.replyButton:active {
+  color: hsl(239, 57%, 85%);
+}
 .replyingTo {
   font-weight: bold;
   color: hsl(238, 40%, 52%);
+}
+
+.controlButton {
+  font-family: inherit;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.buttonText {
+  margin-left: 0.5rem;
+}
+.deleteButton {
+  color: hsl(358, 79%, 66%);
+}
+.deleteButton:active {
+  color: hsl(357, 100%, 86%);
+}
+
+.editButton {
+  color: hsl(238, 40%, 52%);
+}
+
+.editButton:active {
+  color: hsl(239, 57%, 85%);
 }
