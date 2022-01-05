@@ -8,22 +8,8 @@
   border: solid 1px hsl(223, 19%, 93%);
 }
 
-.commentHeader {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
 .commentText {
   color: hsl(211, 10%, 45%);
-}
-
-.userName {
-  font-weight: bold;
-}
-.userAvatar {
-  width: 2rem;
-  height: 2rem;
 }
 
 .commentControls {

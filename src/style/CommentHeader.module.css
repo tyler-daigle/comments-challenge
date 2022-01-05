@@ -1,0 +1,14 @@
+.commentHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.userName {
+  font-weight: bold;
+}
+
+.userAvatar {
+  width: 2rem;
+  height: 2rem;
+}

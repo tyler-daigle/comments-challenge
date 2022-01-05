@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faReply } from "@fortawesome/free-solid-svg-icons";
 import VoteButton from "./VoteButton";
 import styles from "../style/Comment.module.css";
-import avatarPlaceHolder from "../images/avatars/image-amyrobson.png";
+import CommentHeader from "./CommentHeader";
 
 export default function Comment({ comment }) {
   const [numVotes, setNumVotes] = useState();
@@ -18,14 +20,9 @@ export default function Comment({ comment }) {
   };
 
   // TODO: do check for current user and set the "you" badge and the edit and delete buttons
-  // TODO: extract the commentHeader and commentControls to separate components.
   return (
     <div className={styles.commentContainer}>
-      <div className={styles.commentHeader}>
-        <img className={styles.userAvatar} src={avatarPlaceHolder} />
-        <span className={styles.userName}>{comment.user.username}</span>
-        <span className={styles.postedDate}>{comment.createdAt}</span>
-      </div>
+      <CommentHeader comment={comment} />
       <p className={styles.commentText}>{comment.content}</p>
       <div className={styles.commentControls}>
         <VoteButton
@@ -34,7 +31,7 @@ export default function Comment({ comment }) {
           decVotes={decVotes}
         />
         <button type="button" className={styles.replyButton}>
-          ↩️ Reply
+          <FontAwesomeIcon icon={faReply} /> Reply
         </button>
       </div>
     </div>
