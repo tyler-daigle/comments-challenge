@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { SERVER_URL, SERVER_PORT } from "./config";
 import UserContext from "./UserContext";
 import CommentList from "./components/CommentList";
+import CreateReply from "./components/CreateReply";
 import "./App.css";
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
   return (
     <UserContext>
       <CommentList commentList={commentList} />
+      <CreateReply type="send" />
     </UserContext>
   );
 }

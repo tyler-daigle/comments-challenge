@@ -1,10 +1,11 @@
 import styles from "../style/CommentHeader.module.css";
-import avatarPlaceHolder from "../images/avatars/image-amyrobson.png";
+import Avatar from "./Avatar";
 
 export default function CommentHeader({ comment, currentUser }) {
   return (
     <div className={styles.commentHeader}>
-      <img className={styles.userAvatar} src={avatarPlaceHolder} />
+      <Avatar image={comment.user.image.png} />
+
       <span className={styles.userName}>{comment.user.username}</span>
       {currentUser === comment.user.username && (
         <span className={styles.youBadge}>you</span>
