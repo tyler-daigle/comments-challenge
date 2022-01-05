@@ -1,16 +1,16 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply, faTrash, faPen } from "@fortawesome/free-solid-svg-icons";
-import { userContext } from "../UserContext";
 import VoteButton from "./VoteButton";
 import styles from "../style/Comment.module.css";
 import CommentHeader from "./CommentHeader";
 import CreateReply from "./CreateReply";
+import DeleteDialog from "./DeleteDialog";
 
 export default function Comment({ comment, currentUser }) {
   const [numVotes, setNumVotes] = useState();
   const [showReply, setShowReply] = useState(false);
-
+  const [dialogOpen, setDialogOpen] = useState(false);
   const replyClickHandler = () => setShowReply(true);
   const cancelHandler = () => setShowReply(false);
   const okHandler = () => setShowReply(false);
@@ -18,6 +18,13 @@ export default function Comment({ comment, currentUser }) {
   useEffect(() => {
     setNumVotes(comment.score);
   }, []);
+
+  const openDialog = () => setDialogOpen(true);
+  const dialogCancel = () => setDialogOpen(false);
+  const dialogOk = () => {
+    console.log("deleting");
+    setDialogOpen(false);
+  };
 
   const incVotes = () => setNumVotes(numVotes + 1);
   const decVotes = () => {
@@ -28,6 +35,13 @@ export default function Comment({ comment, currentUser }) {
 
   return (
     <div>
+      {dialogOpen && (
+        <DeleteDialog
+          open={dialogOpen}
+          okHandler={dialogOk}
+          cancelHandler={dialogCancel}
+        />
+      )}
       <div className={styles.commentContainer}>
         <CommentHeader comment={comment} currentUser={currentUser} />
         <p className={styles.commentText}>
@@ -44,6 +58,7 @@ export default function Comment({ comment, currentUser }) {
           {currentUser === comment.user.username ? (
             <div className={styles.editControlsContainer}>
               <button
+                onClick={openDialog}
                 className={styles.deleteButton + " " + styles.controlButton}
               >
                 <FontAwesomeIcon icon={faTrash} />

@@ -1,10 +1,18 @@
 import { createContext, useState, useEffect } from "react";
 import { SERVER_URL, SERVER_PORT } from "./config";
 
-export const userContext = createContext();
+export const userContext = createContext({
+  username: "",
+  image: "",
+});
 
 export default function UserContext({ children }) {
-  const [user, setUser] = useState({ username: "", image: "", votes: [] });
+  const [user, setUser] = useState({
+    username: "",
+    image: "",
+    votes: [],
+  });
+  console.log(user);
 
   useEffect(() => {
     // fake login
@@ -14,7 +22,11 @@ export default function UserContext({ children }) {
         const userJson = await res.json();
         const image = userJson.image.png;
         const username = userJson.username;
-        setUser({ username, image });
+        setUser({
+          dialogOpen: false,
+          username,
+          image,
+        });
       } catch (e) {
         console.log(e);
       }
