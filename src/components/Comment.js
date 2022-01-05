@@ -5,9 +5,15 @@ import { userContext } from "../UserContext";
 import VoteButton from "./VoteButton";
 import styles from "../style/Comment.module.css";
 import CommentHeader from "./CommentHeader";
+import CreateReply from "./CreateReply";
 
 export default function Comment({ comment, currentUser }) {
   const [numVotes, setNumVotes] = useState();
+  const [showReply, setShowReply] = useState(false);
+
+  const replyClickHandler = () => setShowReply(true);
+  const cancelHandler = () => setShowReply(false);
+  const okHandler = () => setShowReply(false);
 
   useEffect(() => {
     setNumVotes(comment.score);
@@ -20,40 +26,54 @@ export default function Comment({ comment, currentUser }) {
     }
   };
 
-  // TODO: do check for current user and set the "you" badge and the edit and delete buttons
   return (
-    <div className={styles.commentContainer}>
-      <CommentHeader comment={comment} currentUser={currentUser} />
-      <p className={styles.commentText}>
-        {comment.replyingTo && <ReplyingTo username={comment.replyingTo} />}{" "}
-        {comment.content}
-      </p>
-      <div className={styles.commentControls}>
-        <VoteButton
-          numberVotes={numVotes}
-          incVotes={incVotes}
-          decVotes={decVotes}
-        />
+    <div>
+      <div className={styles.commentContainer}>
+        <CommentHeader comment={comment} currentUser={currentUser} />
+        <p className={styles.commentText}>
+          {comment.replyingTo && <ReplyingTo username={comment.replyingTo} />}{" "}
+          {comment.content}
+        </p>
+        <div className={styles.commentControls}>
+          <VoteButton
+            numberVotes={numVotes}
+            incVotes={incVotes}
+            decVotes={decVotes}
+          />
 
-        {currentUser === comment.user.username ? (
-          <div className={styles.editControlsContainer}>
+          {currentUser === comment.user.username ? (
+            <div className={styles.editControlsContainer}>
+              <button
+                className={styles.deleteButton + " " + styles.controlButton}
+              >
+                <FontAwesomeIcon icon={faTrash} />
+                <span className={styles.buttonText}>Delete</span>
+              </button>
+              <button
+                className={styles.editButton + " " + styles.controlButton}
+              >
+                <FontAwesomeIcon icon={faPen} />
+                <span className={styles.buttonText}>Edit</span>
+              </button>
+            </div>
+          ) : (
             <button
-              className={styles.deleteButton + " " + styles.controlButton}
+              type="button"
+              onClick={replyClickHandler}
+              className={styles.replyButton}
             >
-              <FontAwesomeIcon icon={faTrash} />
-              <span className={styles.buttonText}>Delete</span>
+              <FontAwesomeIcon icon={faReply} /> Reply
             </button>
-            <button className={styles.editButton + " " + styles.controlButton}>
-              <FontAwesomeIcon icon={faPen} />
-              <span className={styles.buttonText}>Edit</span>
-            </button>
-          </div>
-        ) : (
-          <button type="button" className={styles.replyButton}>
-            <FontAwesomeIcon icon={faReply} /> Reply
-          </button>
-        )}
+          )}
+        </div>
       </div>
+      {showReply && (
+        <CreateReply
+          type="reply"
+          okHandler={okHandler}
+          cancelHandler={cancelHandler}
+        />
+      )}
     </div>
   );
 }

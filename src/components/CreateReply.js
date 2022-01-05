@@ -3,7 +3,7 @@ import { userContext } from "../UserContext";
 import Avatar from "./Avatar";
 import styles from "../style/CreateReply.module.css";
 
-export default function CreateReply({ type }) {
+export default function CreateReply({ type, okHandler, cancelHandler }) {
   const { username, image } = useContext(userContext);
 
   return (
@@ -15,7 +15,16 @@ export default function CreateReply({ type }) {
 
       <div className={styles.replyControlsContainer}>
         <Avatar image={image} />
-        <button className={styles.sendButton}>{type.toUpperCase()}</button>
+        <div>
+          {cancelHandler && (
+            <button onClick={cancelHandler} className={styles.cancelButton}>
+              Cancel
+            </button>
+          )}
+          <button onClick={okHandler} className={styles.sendButton}>
+            {type.toUpperCase()}
+          </button>
+        </div>
       </div>
     </div>
   );

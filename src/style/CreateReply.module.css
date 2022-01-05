@@ -31,6 +31,17 @@
   cursor: pointer;
 }
 
+.cancelButton {
+  font-family: inherit;
+  color: white;
+  background-color: #bebaba;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
 .sendButton:active {
   background-color: hsl(239, 57%, 85%);
 }
