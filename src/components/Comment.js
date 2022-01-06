@@ -51,12 +51,13 @@ export default function Comment({ comment, currentUser }) {
           {comment.content}
         </p>
 
+        <VoteButton
+          numberVotes={numVotes}
+          incVotes={incVotes}
+          decVotes={decVotes}
+        />
+
         <div className={styles.commentControls}>
-          <VoteButton
-            numberVotes={numVotes}
-            incVotes={incVotes}
-            decVotes={decVotes}
-          />
           {currentUser === comment.user.username ? (
             <div className={styles.editControlsContainer}>
               <button

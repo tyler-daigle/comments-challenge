@@ -19,4 +19,10 @@
     max-width: 700px;
     margin: 0 auto;
   }
+  .repliesContainer {
+    margin-left: 2rem;
+  }
+  .repliesContainer .commentList {
+    padding-left: 2rem;
+  }
 }
