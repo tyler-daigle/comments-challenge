@@ -12,9 +12,9 @@ export default function DeleteDialog({ okHandler, cancelHandler, open }) {
   return (
     <dialog ref={deleteDialogRef}>
       <h2 className={styles.dialogHeader}>Delete Comment</h2>
-      <p>
+      <p className={styles.dialogContent}>
         Are you sure you want to delete this comment? This will remove the
-        command and can't be undone.
+        comment and can't be undone.
       </p>
       <div className={styles.dialogButtonContainer}>
         <button className={styles.cancelButton} onClick={cancelHandler}>

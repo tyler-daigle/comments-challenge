@@ -21,6 +21,10 @@ dialog {
   color: white;
 }
 
+.dialogContent {
+  line-height: 1.5rem;
+}
+
 .dialogHeader {
   font-size: 1rem;
   color: hsl(212, 24%, 26%);
@@ -31,4 +35,10 @@ dialog {
 
 .cancelButton {
   background-color: hsl(211, 10%, 45%);
+}
+
+@media (min-width: 600px) {
+  dialog {
+    max-width: 400px;
+  }
 }

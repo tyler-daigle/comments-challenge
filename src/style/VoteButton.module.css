@@ -5,6 +5,7 @@
   display: inline-flex;
   /* max-width: 7rem; */
   justify-content: center;
+  align-items: center;
   border-radius: 8px;
   font-size: 0.8rem;
 }
@@ -19,4 +20,10 @@
   font-family: inherit;
   color: hsl(238, 40%, 52%);
   cursor: pointer;
+}
+
+@media (min-width: 600px) {
+  .voteButtonContainer {
+    flex-direction: column;
+  }
 }

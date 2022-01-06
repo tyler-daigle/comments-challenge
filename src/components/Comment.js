@@ -42,19 +42,21 @@ export default function Comment({ comment, currentUser }) {
           cancelHandler={dialogCancel}
         />
       )}
+
       <div className={styles.commentContainer}>
         <CommentHeader comment={comment} currentUser={currentUser} />
+
         <p className={styles.commentText}>
           {comment.replyingTo && <ReplyingTo username={comment.replyingTo} />}{" "}
           {comment.content}
         </p>
+
         <div className={styles.commentControls}>
           <VoteButton
             numberVotes={numVotes}
             incVotes={incVotes}
             decVotes={decVotes}
           />
-
           {currentUser === comment.user.username ? (
             <div className={styles.editControlsContainer}>
               <button

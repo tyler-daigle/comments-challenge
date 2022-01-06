@@ -59,3 +59,9 @@
 .editButton:active {
   color: hsl(239, 57%, 85%);
 }
+
+@media (min-width: 600px) {
+  .commentContainer {
+    border: dashed 1px red;
+  }
+}
