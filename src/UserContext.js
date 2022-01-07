@@ -13,13 +13,13 @@ export default function UserContext({ children }) {
     image: "",
     votes: [],
   });
+
   console.log(user);
 
   // using JSON file rather than server for now
   useEffect(() => {
     const { currentUser } = commentsData;
     setUser({
-      dialogOpen: false,
       username: currentUser.username,
       image: currentUser.image.png,
     });

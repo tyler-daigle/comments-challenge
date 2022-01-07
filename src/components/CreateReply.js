@@ -1,16 +1,31 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { userContext } from "../UserContext";
 import Avatar from "./Avatar";
 import styles from "../style/CreateReply.module.css";
 
-export default function CreateReply({ type, okHandler, cancelHandler }) {
-  const { image } = useContext(userContext);
+export default function CreateReply({
+  type,
+  okHandler,
+  cancelHandler,
+  addComment,
+  commentId,
+}) {
+  const [replyTextArea, setReplyTextArea] = useState("");
+
+  const { username, image } = useContext(userContext);
+  const addCommentHandler = () => {
+    console.log("adding a comment...");
+    addComment(replyTextArea, commentId, username);
+    okHandler();
+  };
 
   return (
     <div className={styles.createReplyContainer}>
       <textarea
         className={styles.replyTextarea}
         placeholder="Add a comment..."
+        value={replyTextArea}
+        onChange={(e) => setReplyTextArea(e.target.value)}
       ></textarea>
 
       <div className={styles.replyControlsContainer}>
@@ -21,7 +36,7 @@ export default function CreateReply({ type, okHandler, cancelHandler }) {
               Cancel
             </button>
           )}
-          <button onClick={okHandler} className={styles.sendButton}>
+          <button onClick={addCommentHandler} className={styles.sendButton}>
             {type.toUpperCase()}
           </button>
         </div>

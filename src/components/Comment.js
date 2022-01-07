@@ -7,7 +7,7 @@ import CommentHeader from "./CommentHeader";
 import CreateReply from "./CreateReply";
 import DeleteDialog from "./DeleteDialog";
 
-export default function Comment({ comment, currentUser }) {
+export default function Comment({ comment, currentUser, addComment }) {
   const [numVotes, setNumVotes] = useState();
   const [showReply, setShowReply] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -90,6 +90,8 @@ export default function Comment({ comment, currentUser }) {
           type="reply"
           okHandler={okHandler}
           cancelHandler={cancelHandler}
+          commentId={comment.id}
+          addComment={addComment}
         />
       )}
     </div>
