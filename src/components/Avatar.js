@@ -1,4 +1,3 @@
-import avatarPlaceHolder from "../images/avatars/image-amyrobson.png";
 import styles from "../style/Avatar.module.css";
 
 export default function Avatar({ image }) {
@@ -6,7 +5,7 @@ export default function Avatar({ image }) {
     <img
       alt="User Avatar"
       className={styles.userAvatar}
-      src={avatarPlaceHolder}
+      src={image.substring(1)}
     />
   );
 }
