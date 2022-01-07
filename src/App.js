@@ -5,6 +5,7 @@ import UserContext from "./UserContext";
 import CommentList from "./components/CommentList";
 import CreateReply from "./components/CreateReply";
 import DeleteDialog from "./components/DeleteDialog";
+import About from "./components/About";
 import "./App.css";
 
 import commentsData from "./temp_data/data.json";
